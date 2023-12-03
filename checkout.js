@@ -1,1 +1,57 @@
-export class MySDK{myApiUrl="https://payproxyapi.hubtel.com/items/initiate";openModal(e){return this.createIfram(),fetch(this.myApiUrl,{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Basic "},body:JSON.stringify(e)}).then((e=>e.json())).then((e=>{this.renderWebpageInPopup(e.data.checkoutUrl)})).catch((e=>{throw console.error("Error:",e),e}))}createIfram(){let e=document.createElement("iframe");e.setAttribute("frameborder","0"),e.setAttribute("allowtransparency","true"),e.setAttribute("id","loaderIframe"),e.setAttribute("style","z-index: 2147483647; background: rgba(0 0 0 / 53%); border: 0px none transparent; overflow: hidden; margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; transition: opacity 0.3s ease 0s; visibility: visible; opacity: 1;"),document.body.appendChild(e)}renderWebpageInPopup(e){const t=document.createElement("iframe");t.src=e,t.setAttribute("frameborder","0"),t.setAttribute("id","true"),t.style.width="100%",t.style.height="100%",t.style.border="none";const o=document.createElement("div");o.style.position="fixed",o.style.top="50px",o.style.marginLeft="auto",o.style.marginRight="auto",o.style.width="100%",o.style.maxWidth="480px",o.style.backgroundColor="#fff",o.style.display="flex",o.style.alignItems="center",o.style.justifyContent="center",o.style.zIndex="65675656565",o.style.transition="bottom 0.5s ease";const n=document.createElement("div");n.innerHTML="&times;",n.style.position="absolute",n.style.top="-30px",n.style.right="0px",n.style.cursor="pointer",n.style.borderRadius="50%",n.style.padding="0 6px",n.style.fontSize="20px",n.style.color="#000",n.style.backgroundColor="#dedede",n.addEventListener("click",(()=>{const e=document.getElementById("loaderIframe");console.log(e),document.body.removeChild(o),console.log(o),document.body.removeChild(e)})),o.appendChild(n);const r=document.createElement("div");r.textContent="Loading...",r.style.display="none",t.addEventListener("load",(()=>{r.style.display="none"})),t.addEventListener("error",(()=>{r.textContent="Error loading content."})),o.appendChild(t),document.body.appendChild(o),o.offsetWidth,r.style.display="block",o.style.bottom="0"}}
+
+var MySDK = function () { 
+  var myApiUrl = "https://payproxyapi.hubtel.com/items/initiate";
+
+   function openModal (data) {
+    createIfram();
+    return fetch(myApiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Basic a09va1BHdjo4MDA2ZTA5NjRkYWI0ZjFmYWEyZGVlOTgyZmMyMWNiMw==",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        renderWebpageInPopup(result.data.checkoutUrl);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        throw error;
+      });
+  };
+
+   function  createIfram () {
+    // Create the iframe element
+    let iframe = document.createElement("iframe");
+
+    // Set attributes for the iframe
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allowtransparency", "true");
+    iframe.setAttribute("id", "loaderIframe");
+    iframe.setAttribute(
+      "style",
+      "z-index: 2147483647; background: rgba(0 0 0 / 53%); border: 0px none transparent; overflow: hidden; margin: 0px; padding: 0px; -webkit-tap-highlight-color: transparent; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; transition: opacity 0.3s ease 0s; visibility: visible; opacity: 1;"
+    );
+
+    document.body.appendChild(iframe);
+  };
+
+ function renderWebpageInPopup (url) {
+    const iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("id", "true");
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+
+    const modal = document.createElement("div");
+    modal.style.position = "fixed";
+    modal.style.top = "50px";
+    modal.style.marginLeft = "auto";
+  }
+}
+
